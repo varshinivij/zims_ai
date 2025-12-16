@@ -14,9 +14,8 @@ class Board:
     def obstacles:
         return self.obstacles
 
-    def is_valid_coordinate(coords):
-        x_val, y_val = coords
-        elif self.n <= x_val  or x_val < 0:
+    def is_valid_coordinate((x_val, y_val)):
+        if self.n <= x_val  or x_val < 0:
             return False
         elif self.n <= y_val  or y_val < 0:
             return False

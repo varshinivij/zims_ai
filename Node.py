@@ -7,7 +7,6 @@ class Node:
         self.children = []
         self.untried_moves = []
         self.position = (x, y)
-        self.n = int(n) #board dimensions
 
     def process_children():
         coordinates = compute_coordinates(self.position)
