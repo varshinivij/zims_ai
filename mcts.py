@@ -21,24 +21,31 @@ def selection():
             if n_uct >= max_ucts:
                 max_ucts = n_uct
                 node = n
-
     return node
 
+def is_expanded():
+    if len(node.untried_moves) == 0:
+        return True
+    return False
 
 def expansion(n):
-    visited.add(node.children)
-    explore = random.randint(0, len(children))
-    simulation(node.children[explore])
+    move = random.choice(n.untried_moves)
+    n.untried_moves.remove(move)
+    n.children.append(move)
+    simulation(move)
 
 
-def simulation(node):
+def simulation(start_node):
+    node = start_node
     while sims < MAX_SIMULATIONS and not node in self.terminal_states:
         move = random.randint(0, len(node.children))
-        node = node.
+        node = node.children[move]
+        board.make_move(node)
+    
+    backpropogation(start_node)
 
 
-
-def backpropogation():
+def backpropogation(node):
     while node is not None:
         node.wins += 1
         node.visits += 1
