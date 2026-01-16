@@ -103,9 +103,6 @@ class DQNAgent:
             self.target_update_counter = 0
 
     def get_qs(self, state):
-        return self.model.predict(np.array(state).reshape(-1, *state.shape))[0]
-
-    def get_qs(self, state):
         imu, servo = state
         imu = np.array(imu).reshape(1, -1)    # shape (1, 6)
         servo = np.array(servo).reshape(1, -1) # shape (1, 12)
