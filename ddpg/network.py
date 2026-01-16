@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import Input, Model
 from tensorflow.keras.layers import Dense, Concatenate
-
+from config import ACTION_SPACE_SIZE
 import numpy as np
 #actor network
 #input: state vector; output: continuous actions
@@ -12,7 +12,7 @@ import numpy as np
 #target actor & target critic network for stablization
 
 #Actor state input consists of IMU (6), Servo (12), Lidar (3)
-ACTION_SPACE_SIZE = 4
+
 
 class Actor:
     def actor_model(self):
@@ -61,4 +61,3 @@ class Critic:
         critic_model = Model(inputs=[imu_input, servo_input, lidar_input, action_input], outputs=output)
 
         return critic_model
-
