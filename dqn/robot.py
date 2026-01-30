@@ -1,35 +1,25 @@
+
+"""
+This code defines the robot state variables and actions the robot may take.
+"""
 import numpy as np
 
 #these need to be defined
 #DEFAULT_SERVO_POSITIONS = 
-#MOVE_FORWARD =
-#TURN_LEFT =
-#TURN_RIGHT =
+#DEFAULT_ORIENTATION = 
 #SERVO_MIN = 
 #SERVO_MAX = 
-#GAIT CYCLES need to be defined
+#LIDAR_SIZE = 
+
 class Robot:
     def __init__(self):
+        #Need normalization for easier learning 
         self.servo_positions = DEFAULT_SERVO_POSITIONS
-        self.orientation = np.zeros(3)
+        self.orientation = DEFAULT_ORIENTATION
         self.angular_velocity = np.zeros(3)
+        self.lidar = np.zeros(LIDAR_SIZE)
         
-    def take_action(self, choice):
-        if choice == 0:
-            self.move_forward()
-        elif choice == 1:
-            self.turn_left()
-        elif choice == 2:
-            self.turn_right()
-    
-    #functions need to be further defined by gait pattern and orientation changes
-    def move_forward(self): 
-        pass
-    
-    def turn_left(self):
-        pass
-
-    def turn_right(self):
+    def choose_action(self, servo_positions):
         pass
 
     def update_orientation(self):
@@ -37,8 +27,8 @@ class Robot:
 
     def get_state(self):
         return np.concatenate([
-            self.orientation,
-            self.angular_velocity,
-            self.servo_positions
+            self.orientation,        # 3
+            self.angular_velocity,   # 3
+            self.lidar,              # LIDAR_BINS
+            self.servo_positions     # 12
         ])
-        

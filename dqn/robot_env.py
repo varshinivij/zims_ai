@@ -1,4 +1,8 @@
 
+"""
+This code defines the environment in which the robot operates.
+"""
+
 from robot import Robot
 
 MOVE_REWARD = 1
@@ -23,9 +27,8 @@ class RobotEnv:
     def take_action(self, action):
         reward = 0
         done = False
-        self.robot.move(action)
-        self.step_count += 1
 
+        self.robot.choose_action(servo_commands)
         pitch, roll, yaw = self.robot.orientation
 
         if abs(roll) > MAX_ROLL_VAL or abs(pitch) > MAX_PITCH_VAL:
