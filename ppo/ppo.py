@@ -92,6 +92,7 @@ class ActorNetwork(nn.Module):
         dist = Normal(mean, std)   # CHANGED: Normal distribution
         return dist
 
+    #save and load the model weights
     def save_checkpoint(self):
         T.save(self.state_dict(), self.checkpoint_file)
 
